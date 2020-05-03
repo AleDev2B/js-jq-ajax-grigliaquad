@@ -1,0 +1,29 @@
+/* impostazioni generali pagina */
+
+*{
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container{
+  display: flex;
+  width: 65vw;
+  height:95vh;
+  margin: auto;
+}
+
+.quadrato{
+  border: 1px solid grey;
+  width: calc(65vw / 6);
+  height:calc(95vh / 6);
+  text-align: center;
+  vertical-align: middle;
+}
+
+.red{
+  background-color: red;
+}
+
+.yellow{
+  background-color: yellow;
+}
