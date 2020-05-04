@@ -4,28 +4,44 @@
 
 
 $(document).ready(function(){
-// seleziona il quadrato all'interno dell'html e attiva il monitoraggio al click
+
+// seleziona il quadrato all'interno dell'html e attiva la funzione di callback al click
   $(".quadrato").click(function(){
-
+// memorizza in una var lo stato del quadrato cliccato
     var squareClicked = $(this);
-// al click del quadrato, parti con la richiesta ajax
-      $.ajax({
+// memorizza in una var il valore testo iniziale del cubo selezionato
+    var valoreIniziale = squareClicked.text()
+    // console.log(valoreIniziale);
+    // se il quadrato ha il valore iniziale nullo allora lancia la chiamata ajax
+    if (valoreIniziale === "") {
+      // al click del quadrato, parti con la richiesta ajax
+            $.ajax({
 
-        url:"https://flynn.boolean.careers/exercises/api/random/int",
-        method:"GET",
-        success:function (data){
-          // la richiesta è andata a buon fine, memorizza il valore in una var
-          var ajaxNum = data.response;
-          squareClicked.text(""+ajaxNum)
-          if (ajaxNum > 5) {
-            squareClicked.addClass("yellow");
-          } else {
-            squareClicked.addClass("red");
-          }
-          // console.log(ajaxNum);
-        }
+              url:"https://flynn.boolean.careers/exercises/api/random/int",
+              method:"GET",
+              success:function (data){
+                // la richiesta è andata a buon fine, memorizza il valore in una var
+                var ajaxNum = data.response;
+                 valoreIniziale = squareClicked.text(""+ajaxNum)
+                 // console.log(valoreIniziale);
+                if (ajaxNum > 5) {
+                  squareClicked.addClass("yellow");
+                } else {
+                  squareClicked.addClass("red");
+                }
 
-      });
+              }
+
+            });
+    }
+
+
+
+
+
+
+
+
 
 
 
